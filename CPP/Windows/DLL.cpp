@@ -101,6 +101,14 @@ bool CLibrary::Load(LPCTSTR lpLibFileName)
     strcpy(name+len-4,".so");
   }
 
+#ifdef __ANDROID__
+  char tmp[MAX_PATHNAME_LEN+1];
+  if (strncmp(name, "./", 2) == 0) {
+      strcpy(tmp, name+2);
+      sprintf(name, "lib%s", tmp);
+  }
+#endif
+
   TRACEN((printf("CLibrary::Load(this=%p,%ls) => %s\n",(void *)this,lpLibFileName,name)))
 
 #ifdef __APPLE_CC__
