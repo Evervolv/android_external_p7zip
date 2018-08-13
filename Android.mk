@@ -16,6 +16,7 @@ common_cflags := \
 common_cflags += \
     -fexceptions \
     -Wno-c++11-narrowing \
+    -Wno-error \
     -Wno-non-virtual-dtor
 
 common_c_includes := \
